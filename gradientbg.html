@@ -1,0 +1,31 @@
+<!-- Background Gradient Animation -->
+<section class="gradient-animation-section">
+    <h1>Elegant Gradient Animation</h1>
+  </section>
+  
+  <style>
+  .gradient-animation-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(45deg, #5800FF, #000000, #FFC600);
+    background-size: 300% 300%;
+    animation: gradientBackground 10s ease infinite;
+    color: #FFC600;
+    font-size: 2em;
+  }
+  
+  @keyframes gradientBackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  </style>
+  

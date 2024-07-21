@@ -1,0 +1,30 @@
+<!-- Rotating Image -->
+<section class="rotating-image-section">
+    <img src="your-image.jpg" alt="Rotating Image" class="rotating-image">
+  </section>
+  
+  <style>
+  .rotating-image-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+  }
+  .rotating-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: rotate 10s linear infinite;
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  </style>
+  

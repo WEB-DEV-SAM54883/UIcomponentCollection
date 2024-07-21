@@ -1,0 +1,32 @@
+<!-- Sliding Text Animation -->
+<section class="sliding-text-section">
+    <div class="sliding-text">Sliding Text Animation</div>
+  </section>
+  
+  <style>
+  .sliding-text-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+  }
+  .sliding-text {
+    color: #FFC600;
+    font-size: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    animation: slideText 5s infinite linear;
+  }
+  
+  @keyframes slideText {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  </style>
+  

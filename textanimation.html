@@ -1,0 +1,60 @@
+<!-- 3D Scroll-Triggered Image Parallax -->
+<section class="scroll-image-parallax-section">
+    <div class="scroll-image-container">
+      <img src="image1-large.png" alt="Image 1" class="scroll-parallax-image">
+      <img src="image2-large.png" alt="Image 2" class="scroll-parallax-image">
+      <img src="image3-large.png" alt="Image 3" class="scroll-parallax-image">
+    </div>
+  </section>
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 300vh; /* Enough height to scroll */
+    background-color: #f0f0f0;
+  }
+  
+  .scroll-image-parallax-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .scroll-image-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .scroll-parallax-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .scroll-parallax-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+  </style>
+  
+  <script>
+  document.addEventListener("scroll", function() {
+    const images = document.querySelectorAll('.scroll-parallax-image');
+    const scrollY = window.scrollY;
+  
+    images.forEach((image, index) => {
+      const depth = (index + 1) * 10;
+      const translateZ = -scrollY / depth;
+      image.style.transform = `translateZ(${translateZ}px)`;
+    });
+  });
+  </script>
+  

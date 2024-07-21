@@ -1,0 +1,72 @@
+<!-- 3D Scroll-Triggered Helix -->
+<section class="scroll-helix-section">
+    <div class="scroll-helix">
+      <div class="scroll-helix-item">1</div>
+      <div class="scroll-helix-item">2</div>
+      <div class="scroll-helix-item">3</div>
+      <div class="scroll-helix-item">4</div>
+      <div class="scroll-helix-item">5</div>
+      <div class="scroll-helix-item">6</div>
+      <div class="scroll-helix-item">7</div>
+      <div class="scroll-helix-item">8</div>
+    </div>
+  </section>
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 300vh; /* Enough height to scroll */
+    background-color: #45474B;
+  }
+  
+  .scroll-helix-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    perspective: 1000px;
+  }
+  
+  .scroll-helix {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+  
+  .scroll-helix-item {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #F4CE14;
+    color: #45474B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border: 2px solid #495E57;
+    border-radius: 50%;
+    transition: transform 1s;
+  }
+  </style>
+  
+  <script>
+  document.addEventListener("scroll", function() {
+    const helix = document.querySelector('.scroll-helix');
+    const items = document.querySelectorAll('.scroll-helix-item');
+    const scrollY = window.scrollY;
+    const rotation = scrollY / 2;
+  
+    helix.style.transform = `rotateX(${rotation}deg)`;
+  
+    items.forEach((item, index) => {
+      const angle = index * 45 + rotation;
+      const translateY = 100 * Math.sin(angle * Math.PI / 180);
+      const translateZ = 100 * Math.cos(angle * Math.PI / 180);
+      item.style.transform = `translateY(${translateY}px) translateZ(${translateZ}px) rotateY(${angle}deg)`;
+    });
+  });
+  </script>
+  

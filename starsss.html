@@ -1,0 +1,56 @@
+<!-- Background with Randomly Generated Stars -->
+<section class="starry-background-section">
+    <div class="starry-background"></div>
+  </section>
+  
+  <style>
+  .starry-background-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000000;
+  }
+  .starry-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #FFC600;
+    border-radius: 50%;
+    animation: twinkling 1.5s infinite alternate;
+  }
+  
+  @keyframes twinkling {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0.3;
+    }
+  }
+  </style>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const starryBackground = document.querySelector('.starry-background');
+    const numberOfStars = 100;
+  
+    for (let i = 0; i < numberOfStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.width = `${Math.random() * 3}px`;
+      star.style.height = star.style.width;
+      star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+      starryBackground.appendChild(star);
+    }
+  });
+  </script>
+  

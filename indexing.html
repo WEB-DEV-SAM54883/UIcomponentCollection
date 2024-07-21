@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Pricing Table</title>
+  <style>
+    .pricing {
+      display: flex;
+      justify-content: space-around;
+      padding: 50px;
+      background: #f4f4f4;
+    }
+    .pricing-plan {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 30%;
+      transition: transform 0.3s ease;
+    }
+    .pricing-plan:hover {
+      transform: scale(1.05);
+    }
+    .pricing-plan h2 {
+      margin-bottom: 20px;
+    }
+    .pricing-plan .price {
+      font-size: 2em;
+      color: #ff6347;
+    }
+    .pricing-plan ul {
+      list-style: none;
+      padding: 0;
+    }
+    .pricing-plan ul li {
+      margin: 10px 0;
+    }
+    .btn-primary {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Pricing Table -->
+  <section class="pricing">
+    <div class="pricing-plan">
+      <h2>Basic Plan</h2>
+      <p class="price">$19/mo</p>
+      <ul>
+        <li>Feature One</li>
+        <li>Feature Two</li>
+        <li>Feature Three</li>
+      </ul>
+      <a href="#" class="btn-primary">Choose Plan</a>
+    </div>
+    <div class="pricing-plan">
+      <h2>Standard Plan</h2>
+      <p class="price">$49/mo</p>
+      <ul>
+        <li>Feature One</li>
+        <li>Feature Two</li>
+        <li>Feature Three</li>
+      </ul>
+      <a href="#" class="btn-primary">Choose Plan</a>
+    </div>
+    <div class="pricing-plan">
+      <h2>Premium Plan</h2>
+      <p class="price">$99/mo</p>
+      <ul>
+        <li>Feature One</li>
+        <li>Feature Two</li>
+        <li>Feature Three</li>
+      </ul>
+      <a href="#" class="btn-primary">Choose Plan</a>
+    </div>
+  </section>
+</body>
+</html>

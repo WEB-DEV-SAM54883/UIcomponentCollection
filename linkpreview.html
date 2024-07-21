@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Preview Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .link-preview {
+            position: relative;
+            color: inherit;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .link-preview::after {
+            content: attr(data-url);
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 200px;
+            background-color: #333;
+            color: #FFF;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .link-preview:hover::after {
+            opacity: 1;
+        }
+
+        .bg-gradient {
+            background-clip: text;
+            text-transparent: bg-gradient-to-br from-purple-500 to-pink-500;
+        }
+    </style>
+</head>
+<body class="bg-black text-white h-screen flex justify-center items-center">
+    <div class="flex justify-center items-center h-[40rem] flex-col px-4">
+        <p class="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl mx-auto mb-10">
+            <a href="https://tailwindcss.com" class="link-preview" data-url="Tailwind CSS">Tailwind CSS</a>
+            and
+            <a href="https://framer.com/motion" class="link-preview" data-url="Framer Motion">Framer Motion</a>
+            are a great way to build modern websites.
+        </p>
+        <p class="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl mx-auto">
+            Visit
+            <a href="https://ui.aceternity.com" class="link-preview font-bold bg-gradient" data-url="Aceternity UI">Aceternity UI</a>
+            for amazing Tailwind and Framer Motion components.
+        </p>
+    </div>
+</body>
+</html>

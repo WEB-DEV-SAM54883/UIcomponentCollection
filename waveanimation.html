@@ -1,0 +1,53 @@
+<!-- 3D Scroll-Triggered Wave Animation -->
+<section class="scroll-wave-animation-section">
+    <div class="wave-container">
+      <svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,120V80C100,120,200,60,300,40S500,60,600,80S900,60,1000,40S1200,80,1200,80V120H0Z"></path>
+      </svg>
+    </div>
+  </section>
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 200vh; /* Enough height to scroll */
+    background-color: #282828;
+  }
+  
+  .scroll-wave-animation-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .wave-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+  
+  .wave {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+    fill: #ff6347;
+    transform: translateY(0);
+    transition: transform 0.5s;
+  }
+  </style>
+  
+  <script>
+  document.addEventListener("scroll", function() {
+    const wave = document.querySelector('.wave');
+    const scrollY = window.scrollY;
+    const translateY = Math.min(scrollY / 5, 150);
+    wave.style.transform = `translateY(${translateY}px)`;
+  });
+  </script>
+  

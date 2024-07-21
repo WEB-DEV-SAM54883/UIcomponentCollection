@@ -1,0 +1,30 @@
+<!-- Spinning Text Animation -->
+<section class="spinning-text-section">
+    <h1 class="spinning-text">Spinning Text</h1>
+  </section>
+  
+  <style>
+  .spinning-text-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #45474B;
+  }
+  .spinning-text {
+    font-size: 3em;
+    color: #F4CE14;
+    display: inline-block;
+    animation: spin 3s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  </style>
+  

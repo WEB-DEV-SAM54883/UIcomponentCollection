@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Preview Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .link-preview {
+            position: relative;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s, background 0.3s;
+        }
+
+        .link-preview:hover {
+            color: #FFC600;
+        }
+
+        .link-preview::after {
+            content: attr(data-title);
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 200px;
+            background-color: #333;
+            color: #FFF;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s;
+            white-space: nowrap;
+        }
+
+        .link-preview:hover::after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bg-gradient-to-br {
+            background-image: linear-gradient(to bottom right, #7e22ce, #ec4899);
+        }
+
+        .bg-clip-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-black text-white flex justify-center items-center h-[40rem] flex-col px-4">
+    <p class="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl mx-auto mb-10">
+        <a href="https://tailwindcss.com" class="link-preview" data-title="Tailwind CSS">Tailwind CSS</a> and
+        <a href="https://framer.com/motion" class="link-preview" data-title="Framer Motion">Framer Motion</a>
+        are a great way to build modern websites.
+    </p>
+    <p class="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl mx-auto">
+        Visit
+        <a href="https://ui.aceternity.com" class="link-preview font-bold bg-clip-text text-transparent bg-gradient-to-br" data-title="Aceternity UI">Aceternity UI</a>
+        for amazing Tailwind and Framer Motion components.
+    </p>
+</body>
+</html>

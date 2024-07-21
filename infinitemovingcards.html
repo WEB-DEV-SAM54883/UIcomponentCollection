@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Moving Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .moving-cards-container {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .moving-cards {
+            display: flex;
+            animation: moveCards 20s linear infinite;
+        }
+
+        .card {
+            flex: 0 0 auto;
+            margin: 0 10px;
+            min-width: 300px;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to bottom right, #1f2937, #4b5563);
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+        }
+
+        .testimonial-name {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .testimonial-title {
+            color: #A0AEC0;
+        }
+
+        @keyframes moveCards {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-100% - 20px)); /* Adjust for margin */
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white flex items-center justify-center h-screen overflow-hidden">
+    <div class="h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative">
+        <div class="moving-cards-container">
+            <div class="moving-cards" id="movingCards">
+                <div class="card bg-yellow-500 text-black">
+                    <p class="testimonial-quote">"It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair."</p>
+                    <div class="testimonial-name">Charles Dickens</div>
+                    <div class="testimonial-title">A Tale of Two Cities</div>
+                </div>
+                <div class="card bg-blue-600 text-white">
+                    <p class="testimonial-quote">"To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep."</p>
+                    <div class="testimonial-name">William Shakespeare</div>
+                    <div class="testimonial-title">Hamlet</div>
+                </div>
+                <div class="card bg-yellow-500 text-black">
+                    <p class="testimonial-quote">"All that we see or seem is but a dream within a dream."</p>
+                    <div class="testimonial-name">Edgar Allan Poe</div>
+                    <div class="testimonial-title">A Dream Within a Dream</div>
+                </div>
+                <div class="card bg-blue-600 text-white">
+                    <p class="testimonial-quote">"It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife."</p>
+                    <div class="testimonial-name">Jane Austen</div>
+                    <div class="testimonial-title">Pride and Prejudice</div>
+                </div>
+                <div class="card bg-yellow-500 text-black">
+                    <p class="testimonial-quote">"Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world."</p>
+                    <div class="testimonial-name">Herman Melville</div>
+                    <div class="testimonial-title">Moby-Dick</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const movingCards = document.getElementById('movingCards');
+            const cards = Array.from(movingCards.children);
+            const numOfDuplicates = Math.ceil(window.innerWidth / movingCards.scrollWidth) + 1;
+
+            // Duplicate the cards to ensure seamless scrolling
+            for (let i = 0; i < numOfDuplicates; i++) {
+                cards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    movingCards.appendChild(clone);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

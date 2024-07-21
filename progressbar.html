@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll-Triggered Progress Bar</title>
+    <style>
+        .progress-bar-section {
+            height: 200vh;
+            background-color: #000000;
+        }
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background-color: #FFC600;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <section class="progress-bar-section">
+        <div class="progress-bar"></div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            document.querySelector('.progress-bar').style.width = scrollPercentage + '%';
+        });
+    </script>
+</body>
+</html>

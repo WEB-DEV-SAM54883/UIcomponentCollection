@@ -1,0 +1,82 @@
+<!-- Hero Section with Text Slide-In and Background Zoom -->
+<section class="hero-zoom-slide-section">
+    <div class="hero-zoom-slide-bg"></div>
+    <div class="hero-zoom-slide-content">
+      <h1>Welcome to Our Website</h1>
+      <p>Discover the amazing features we offer.</p>
+      <a href="#services" class="btn-primary">Get Started</a>
+    </div>
+  </section>
+  
+  <style>
+  .hero-zoom-slide-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .hero-zoom-slide-bg {
+    background: url('your-image.jpg') center center / cover no-repeat;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: zoomBackground 10s infinite;
+  }
+  .hero-zoom-slide-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: #FFC600;
+    animation: slideInText 1s forwards;
+  }
+  .hero-zoom-slide-content h1 {
+    font-size: 3em;
+    margin: 0;
+    animation: fadeIn 2s 1s forwards;
+  }
+  .hero-zoom-slide-content p {
+    font-size: 1.5em;
+    margin: 20px 0;
+    animation: fadeIn 2s 2s forwards;
+  }
+  .btn-primary {
+    background-color: #5800FF;
+    color: #FFC600;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    animation: fadeIn 2s 3s forwards;
+  }
+  
+  @keyframes zoomBackground {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  @keyframes slideInText {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  </style>
+  

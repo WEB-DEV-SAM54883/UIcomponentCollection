@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .image-card {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div class="container mx-auto py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="image-card">
+                <img src="images/subway.jpg" alt="Placeholder" class="w-full h-full object-cover">
+            </div>
+            <div class="image-card">
+                <img src="images/subway.jpg" alt="Placeholder" class="w-full h-full object-cover">
+            </div>
+            <div class="image-card">
+                <img src="images/subway.jpg" alt="Placeholder" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

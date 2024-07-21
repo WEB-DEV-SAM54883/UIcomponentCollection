@@ -1,0 +1,57 @@
+<!-- Scroll-Triggered 3D Cube Animation -->
+<section class="cube-animation-section">
+    <div class="cube-container">
+      <div class="cube">
+        <div class="face front">Front</div>
+        <div class="face back">Back</div>
+        <div class="face left">Left</div>
+        <div class="face right">Right</div>
+        <div class="face top">Top</div>
+        <div class="face bottom">Bottom</div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+  .cube-animation-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+  }
+  .cube-container {
+    perspective: 1000px;
+  }
+  .cube {
+    position: relative;
+    width: 200px;
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg) rotateY(-45deg);
+    animation: rotateCube 10s infinite;
+  }
+  .face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: #5800FF;
+    color: #FFC600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border: 2px solid #FFC600;
+  }
+  .front  { transform: translateZ(100px); }
+  .back   { transform: rotateY(180deg) translateZ(100px); }
+  .left   { transform: rotateY(-90deg) translateZ(100px); }
+  .right  { transform: rotateY(90deg) translateZ(100px); }
+  .top    { transform: rotateX(90deg) translateZ(100px); }
+  .bottom { transform: rotateX(-90deg) translateZ(100px); }
+  
+  @keyframes rotateCube {
+    0% { transform: rotateX(-30deg) rotateY(-45deg); }
+    100% { transform: rotateX(330deg) rotateY(315deg); }
+  }
+  </style>
+  

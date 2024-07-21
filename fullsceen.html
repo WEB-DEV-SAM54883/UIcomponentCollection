@@ -1,0 +1,60 @@
+<!-- Fullscreen Overlay Menu -->
+<section class="fullscreen-menu-section">
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    <div class="fullscreen-menu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </section>
+  
+  <style>
+  .fullscreen-menu-section {
+    position: relative;
+    height: 100vh;
+    background-color: #000000;
+  }
+  .menu-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2em;
+    color: #FFC600;
+    cursor: pointer;
+  }
+  .fullscreen-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+  }
+  .fullscreen-menu a {
+    color: #5800FF;
+    font-size: 2em;
+    margin: 20px 0;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .fullscreen-menu a:hover {
+    color: #FFC600;
+  }
+  .fullscreen-menu.active {
+    transform: translateY(0);
+  }
+  </style>
+  
+  <script>
+  function toggleMenu() {
+    document.querySelector('.fullscreen-menu').classList.toggle('active');
+  }
+  </script>
+  

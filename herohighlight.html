@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Highlight Demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <div class="flex items-center justify-center min-h-screen">
+    <div id="hero-highlight" class="max-w-4xl mx-auto text-center">
+      <h1 id="hero-text" class="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white leading-relaxed lg:leading-snug">
+        With insomnia, nothing&apos;s real. Everything is far away. Everything is a 
+        <span class="text-black dark:text-white">copy, of a copy, of a copy.</span>
+      </h1>
+    </div>
+  </div>
+  <script>
+    const { motion } = window['framer-motion'];
+
+    const heroText = document.getElementById('hero-text');
+
+    // Define initial state
+    heroText.style.opacity = 0;
+    heroText.style.transform = 'translateY(20px)';
+
+    // Apply animation using Framer Motion
+    motion.animate(heroText, {
+      opacity: 1,
+      y: [20, -5, 0]
+    }, {
+      duration: 0.5,
+      ease: [0.4, 0.0, 0.2, 1]
+    });
+  </script>
+</body>
+</html>

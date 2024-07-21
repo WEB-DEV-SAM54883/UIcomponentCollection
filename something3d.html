@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive 3D Scroll</title>
+    <style>
+        body {
+            margin: 0;
+            height: 200vh;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1px;
+            perspective-origin: 50% 50%;
+        }
+        .content {
+            position: relative;
+            width: 80%;
+            height: 80vh;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transform-style: preserve-3d;
+        }
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #34e89e, #0f3443);
+            transform: rotateY(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="card"></div>
+    </div>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.pageYOffset / (document.body.scrollHeight - window.innerHeight);
+            document.querySelector('.card').style.transform = `rotateY(${scrollPos * 360}deg)`;
+        });
+    </script>
+</body>
+</html>

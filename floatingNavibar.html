@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <nav class="navbar fixed top-0 w-full bg-black p-4 transition-transform duration-300 z-50">
+        <div class="container mx-auto flex justify-between">
+            <div class="text-yellow-400 text-xl font-bold">Logo</div>
+            <ul class="flex space-x-4">
+                <li>
+                    <a href="#" class="flex items-center space-x-1 text-white hover:text-yellow-400">
+                        <i class="fas fa-home h-4 w-4 text-neutral-500 dark:text-white"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center space-x-1 text-white hover:text-yellow-400">
+                        <i class="fas fa-user h-4 w-4 text-neutral-500 dark:text-white"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center space-x-1 text-white hover:text-yellow-400">
+                        <i class="fas fa-envelope h-4 w-4 text-neutral-500 dark:text-white"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mx-auto p-10 pt-20">
+        <div class="grid grid-cols-1 h-[40rem] w-full bg-white dark:bg-black relative border border-neutral-200 dark:border-white/[0.2] rounded-md">
+            <p class="dark:text-white text-neutral-600 text-center text-4xl mt-40 font-bold">
+                Scroll back up to reveal Navbar
+            </p>
+            <div class="inset-0 absolute bg-grid-black/[0.1] dark:bg-grid-white/[0.2]"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let lastScrollTop = 0;
+            const navbar = document.querySelector('.navbar');
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > lastScrollTop) {
+                    navbar.classList.add('hidden');
+                } else {
+                    navbar.classList.remove('hidden');
+                }
+
+                lastScrollTop = scrollTop;
+            });
+        });
+    </script>
+</body>
+</html>

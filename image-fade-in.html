@@ -1,0 +1,40 @@
+<!-- Staggered Image Fade-In -->
+<section class="staggered-image-section">
+    <div class="staggered-image"><img src="image1-large.png" alt="Image 1"></div>
+    <div class="staggered-image"><img src="image2-large.png" alt="Image 2"></div>
+    <div class="staggered-image"><img src="image3-large.png" alt="Image 3"></div>
+  </section>
+  
+  <style>
+  .staggered-image-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    background-color: #F5F7F8;
+  }
+  .staggered-image img {
+    width: 200px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeIn 1s forwards;
+  }
+  
+  .staggered-image:nth-child(1) img {
+    animation-delay: 0.5s;
+  }
+  .staggered-image:nth-child(2) img {
+    animation-delay: 1s;
+  }
+  .staggered-image:nth-child(3) img {
+    animation-delay: 1.5s;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  </style>
+  

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom-In Image on Hover</title>
+    <style>
+        .zoom-in-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+        }
+
+        .zoom-in-box img {
+            width: 300px;
+            transition: transform 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .zoom-in-box img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <section class="zoom-in-section">
+        <div class="zoom-in-box">
+            <img src="your-image.jpg" alt="Zoom In Image">
+        </div>
+    </section>
+</body>
+</html>

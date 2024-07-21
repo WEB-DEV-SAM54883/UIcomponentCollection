@@ -1,0 +1,56 @@
+<!-- Glowing Background Stars Card -->
+<section class="glowing-card-section">
+    <div class="glowing-card">
+      <h2>Hover Me!</h2>
+      <p>This card has a glowing starry background effect.</p>
+    </div>
+  </section>
+  
+  <style>
+  .glowing-card-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+  }
+  .glowing-card {
+    background-color: #5800FF;
+    color: #FFC600;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px #5800FF;
+    transition: box-shadow 0.3s ease;
+  }
+  .glowing-card:hover {
+    box-shadow: 0 0 20px #FFC600;
+  }
+  .glowing-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(#FFC600, transparent 70%);
+    background-size: 50px 50px;
+    animation: starsBackground 10s linear infinite;
+    z-index: 0;
+  }
+  .glowing-card h2, .glowing-card p {
+    position: relative;
+    z-index: 1;
+  }
+  
+  @keyframes starsBackground {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(-50%, -50%);
+    }
+  }
+  </style>
+  

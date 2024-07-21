@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Words</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .flip-words {
+            font-size: 2rem;
+            color: #FFC600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .word {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .word.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .word.hide {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+    </style>
+</head>
+<body class="bg-black text-white h-screen flex items-center justify-center">
+    <div class="flip-words">
+        <span class="word show">Creative</span>
+        <span class="word">Innovative</span>
+        <span class="word">Inspiring</span>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const words = document.querySelectorAll('.flip-words .word');
+            let index = 0;
+
+            setInterval(() => {
+                words[index].classList.remove('show');
+                words[index].classList.add('hide');
+                index = (index + 1) % words.length;
+                words[index].classList.remove('hide');
+                words[index].classList.add('show');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!-- Scroll-Triggered 3D Image Zoom -->
+<section class="scroll-image-zoom-section">
+    <div class="scroll-image-container">
+      <img src="images\subway.jpg" alt="Zoom Image" class="scroll-zoom-image">
+    </div>
+  </section>
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 200vh; /* Enough height to scroll */
+    background-color: #e8e8e8;
+  }
+  
+  .scroll-image-zoom-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    perspective: 1000px;
+  }
+  
+  .scroll-image-container {
+    overflow: hidden;
+  }
+  
+  .scroll-zoom-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s, filter 0.5s;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .scroll-zoom-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+  </style>
+  
+  <script>
+  document.addEventListener("scroll", function() {
+    const image = document.querySelector('.scroll-zoom-image');
+    const scrollY = window.scrollY;
+    const scale = 1 + scrollY / 1000;
+    const blur = Math.min(scrollY / 50, 20);
+    image.style.transform = `scale(${scale})`;
+    image.style.filter = `blur(${blur}px)`;
+  });
+  </script>
+  

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Blob Cursor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            cursor: none;
+        }
+
+        #blobCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white h-screen">
+    <div class="flex justify-center items-center h-full">
+        <h1 class="text-3xl">Hover over me!</h1>
+    </div>
+    <canvas id="blobCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('blobCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', function(e) {
+            cursorX = e.clientX;
+            cursorY = e.clientY;
+        });
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = '#5800FF';
+            ctx.beginPath();
+            ctx.arc(cursorX, cursorY, 30, 0, Math.PI * 2);
+            ctx.fill();
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
+</body>
+</html>

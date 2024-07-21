@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery with Lightbox Effect</title>
+  <!-- Lightbox CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .gallery-item {
+      flex: 1 1 calc(33.333% - 10px);
+      max-width: calc(33.333% - 10px);
+    }
+    .gallery-item img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .gallery-item img:hover {
+      transform: scale(1.05);
+    }
+    .lightbox {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Image Gallery -->
+  <section class="gallery">
+    <div class="gallery-item">
+      <a href="image1-large.png" class="lightbox" data-lightbox="gallery">
+        <img src="image1-large.png" alt="Image 1">
+      </a>
+    </div>
+    <div class="gallery-item">
+      <a href="image2-large.png" class="lightbox" data-lightbox="gallery">
+        <img src="image2-thumb.png" alt="Image 2">
+      </a>
+    </div>
+    <div class="gallery-item">
+      <a href="image3-large.png" class="lightbox" data-lightbox="gallery">
+        <img src="image3-thumb.png" alt="Image 3">
+      </a>
+    </div>
+  </section>
+
+  <!-- Lightbox JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>

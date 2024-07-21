@@ -1,0 +1,74 @@
+<!-- 3D Text Animation with Three.js -->
+<section class="hero-section">
+    <div id="hero-text"></div>
+  </section>
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #F5F7F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  #hero-text {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/js/loaders/FontLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/js/geometries/TextGeometry.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('hero-text').appendChild(renderer.domElement);
+  
+    const loader = new THREE.FontLoader();
+    loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
+      const geometry = new THREE.TextGeometry('Hello, World!', {
+        font: font,
+        size: 1,
+        height: 0.5,
+        curveSegments: 12,
+        bevelEnabled: true,
+        bevelThickness: 0.1,
+        bevelSize: 0.1,
+        bevelOffset: 0,
+        bevelSegments: 5
+      });
+      const material = new THREE.MeshBasicMaterial({ color: 0xF4CE14 });
+      const textMesh = new THREE.Mesh(geometry, material);
+      scene.add(textMesh);
+      textMesh.position.set(-3, 0, 0);
+    });
+  
+    camera.position.z = 5;
+  
+    function animate() {
+      requestAnimationFrame(animate);
+      scene.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+  
+    animate();
+  });
+  </script>
+  

@@ -1,0 +1,59 @@
+<!-- Footer with Smooth Slide-In Animation -->
+<footer class="footer-slide-section">
+    <div class="footer-slide-content">
+      <p>&copy; 2024 Your Company. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="icon-facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="icon-twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="icon-instagram.png" alt="Instagram"></a>
+      </div>
+    </div>
+  </footer>
+  
+  <style>
+  .footer-slide-section {
+    background-color: #000000;
+    color: #FFC600;
+    padding: 20px 0;
+    text-align: center;
+    animation: slideInFooter 1s forwards;
+  }
+  .footer-slide-content {
+    max-width: 1000px;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideInFooterContent 1s forwards;
+  }
+  .footer-slide-content p {
+    margin: 10px 0;
+  }
+  .footer-slide-content .social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+  }
+  .footer-slide-content .social-icons img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  @keyframes slideInFooter {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideInFooterContent {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  </style>
+  

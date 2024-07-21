@@ -1,0 +1,46 @@
+<!-- Shake Animation -->
+<section class="shake-section">
+    <div class="shake-box">Hover to Shake</div>
+  </section>
+  
+  <style>
+  .shake-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+  }
+  .shake-box {
+    width: 150px;
+    height: 150px;
+    background-color: #5800FF;
+    color: #FFC600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+  .shake-box:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+    75% {
+      transform: translateX(-5px);
+    }
+  }
+  </style>
+  

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Highlight</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-highlight {
+            position: relative;
+            text-align: center;
+        }
+
+        .animated-header {
+            font-size: 1.5rem; /* Adjust for text-2xl */
+            padding: 1rem; /* Adjust for px-4 */
+            max-width: 32rem; /* Adjust for max-w-4xl */
+            margin: 0 auto; /* Adjust for mx-auto */
+            font-weight: bold; /* Adjust for font-bold */
+            color: #FFFFFF; /* Adjust for text-neutral-700 dark:text-white */
+            line-height: 1.5; /* Adjust for leading-relaxed */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        @media (min-width: 768px) {
+            .animated-header {
+                font-size: 2.25rem; /* Adjust for md:text-4xl */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .animated-header {
+                font-size: 3rem; /* Adjust for lg:text-5xl */
+                line-height: 1.25; /* Adjust for lg:leading-snug */
+            }
+        }
+
+        .highlight {
+            color: #000000; /* Adjust for text-black dark:text-white */
+            background-color: #FFC600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 20%;
+            background-color: #5800FF;
+            z-index: -1;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white h-screen flex items-center justify-center">
+    <div class="hero-highlight">
+        <h1 class="animated-header">
+            With insomnia, nothing's real. Everything is far away. Everything is a 
+            <span class="highlight">copy, of a copy, of a copy.</span>
+        </h1>
+    </div>
+</body>
+</html>

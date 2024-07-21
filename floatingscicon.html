@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Social Icons</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .social-icon {
+            display: inline-block;
+            margin: 10px;
+            transform: translateY(0);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Font Awesome -->
+</head>
+<body class="bg-black">
+    <div class="fixed bottom-0 right-0 m-4">
+        <a href="#" class="social-icon bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition duration-300">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="social-icon bg-blue-400 text-white p-4 rounded-full shadow-lg hover:bg-blue-500 transition duration-300">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="social-icon bg-red-500 text-white p-4 rounded-full shadow-lg hover:bg-red-600 transition duration-300">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Cursor with Follow Effect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            cursor: none;
+        }
+
+        .follow-arrow-cursor {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease;
+        }
+
+        .follow-arrow-cursor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-bottom-color: #FFC600;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white h-screen">
+    <div class="flex justify-center items-center h-full">
+        <h1 class="text-3xl">Hover over me!</h1>
+    </div>
+    <div id="cursor" class="follow-arrow-cursor"></div>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.getElementById('cursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>

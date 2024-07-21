@@ -1,0 +1,43 @@
+<!-- Wavy Text Animation -->
+<section class="wavy-text-section">
+    <h1 class="wavy-text">Wavy Text Animation</h1>
+  </section>
+  
+  <style>
+  .wavy-text-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #495E57;
+  }
+  .wavy-text {
+    font-size: 3em;
+    color: #F5F7F8;
+    display: inline-block;
+    animation: wave 2s infinite;
+  }
+  
+  .wavy-text span {
+    display: inline-block;
+    animation: wave 2s infinite;
+  }
+  
+  .wavy-text span:nth-child(2) { animation-delay: 0.1s; }
+  .wavy-text span:nth-child(3) { animation-delay: 0.2s; }
+  .wavy-text span:nth-child(4) { animation-delay: 0.3s; }
+  .wavy-text span:nth-child(5) { animation-delay: 0.4s; }
+  
+  @keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  </style>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const text = document.querySelector('.wavy-text');
+    text.innerHTML = text.textContent.split('').map((char, i) => `<span style="animation-delay: ${i * 0.1}s">${char}</span>`).join('');
+  });
+  </script>
+  

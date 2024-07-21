@@ -1,0 +1,68 @@
+<!-- 3D Scroll-Triggered Carousel -->
+<section class="scroll-carousel-section">
+    <div class="scroll-carousel">
+      <div class="scroll-carousel-item">1</div>
+      <div class="scroll-carousel-item">2</div>
+      <div class="scroll-carousel-item">3</div>
+      <div class="scroll-carousel-item">4</div>
+      <div class="scroll-carousel-item">5</div>
+    </div>
+  </section>
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 300vh; /* Enough height to scroll */
+    background-color: #495E57;
+  }
+  
+  .scroll-carousel-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    perspective: 1000px;
+  }
+  
+  .scroll-carousel {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+  
+  .scroll-carousel-item {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #F4CE14;
+    color: #45474B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border: 2px solid #495E57;
+    transition: transform 1s;
+  }
+  </style>
+  
+  <script>
+  document.addEventListener("scroll", function() {
+    const carousel = document.querySelector('.scroll-carousel');
+    const items = document.querySelectorAll('.scroll-carousel-item');
+    const scrollY = window.scrollY;
+    const rotation = scrollY / 2;
+  
+    carousel.style.transform = `rotateY(${rotation}deg)`;
+  
+    items.forEach((item, index) => {
+      const angle = index * 72;
+      const translateX = 150 * Math.cos((angle + rotation) * Math.PI / 180);
+      const translateZ = 150 * Math.sin((angle + rotation) * Math.PI / 180);
+      item.style.transform = `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${-angle}deg)`;
+    });
+  });
+  </script>
+  

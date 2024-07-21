@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotating Text Effect</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .content {
+      height: 1000px;
+      text-align: center;
+      padding-top: 50px;
+      background-color: #f4f4f4;
+    }
+    .rotating-text-section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000000;
+    }
+    .rotating-text {
+      color: #5800FF;
+      font-size: 3em;
+      animation: rotate-text 3s linear infinite;
+    }
+
+    @keyframes rotate-text {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Content Before Rotating Text Section -->
+  <div class="content">
+    <h1>Scroll Down to See the Rotating Text Effect</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt justo vitae urna accumsan, nec tempus ex dapibus. Nulla facilisi.</p>
+  </div>
+
+  <!-- Rotating Text Section -->
+  <section class="rotating-text-section">
+    <h1 class="rotating-text">Rotating Text</h1>
+  </section>
+
+  <!-- Content After Rotating Text Section -->
+  <div class="content">
+    <h1>More Content Below the Rotating Text Section</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt justo vitae urna accumsan, nec tempus ex dapibus. Nulla facilisi.</p>
+  </div>
+</body>
+</html>

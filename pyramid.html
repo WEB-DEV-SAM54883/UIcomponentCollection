@@ -1,0 +1,66 @@
+<!-- 3D Scroll-Triggered Pyramid -->
+<section class="scroll-pyramid-section">
+    <div class="scroll-pyramid">
+      <div class="scroll-face front">Front</div>
+      <div class="scroll-face back">Back</div>
+      <div class="scroll-face left">Left</div>
+      <div class="scroll-face right">Right</div>
+      <div class="scroll-face bottom">Bottom</div>
+    </div>
+  </section>
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 200vh; /* Enough height to scroll */
+    background-color: #495E57;
+  }
+  
+  .scroll-pyramid-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .scroll-pyramid {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+  
+  .scroll-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: #F4CE14;
+    border: 2px solid #45474B;
+    color: #45474B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  
+  .scroll-face.front  { transform: rotateY(0deg) translateZ(100px); }
+  .scroll-face.back   { transform: rotateY(180deg) translateZ(100px); }
+  .scroll-face.left   { transform: rotateY(-90deg) translateZ(100px); }
+  .scroll-face.right  { transform: rotateY(90deg) translateZ(100px); }
+  .scroll-face.bottom { transform: rotateX(90deg) translateZ(100px); }
+  </style>
+  
+  <script>
+  document.addEventListener("scroll", function() {
+    const pyramid = document.querySelector('.scroll-pyramid');
+    const scrollY = window.scrollY;
+    const rotateX = Math.min(scrollY / 3, 360);
+    const rotateY = Math.min(scrollY / 4, 360);
+    pyramid.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  </script>
+  

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Scroll Reveal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sticky-container {
+            position: relative;
+            height: 100vh;
+        }
+
+        .sticky-content {
+            position: sticky;
+            top: 0;
+            text-align: center;
+        }
+
+        .sticky-title {
+            font-size: 2rem;
+            color: #FFC600;
+        }
+
+        .reveal-text {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #5800FF;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .content {
+            font-size: 1rem;
+            color: #FFF;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="container mx-auto p-10">
+        <div class="sticky-container">
+            <div class="sticky-content">
+                <h1 class="sticky-title">Scroll to Reveal</h1>
+                <p class="reveal-text">Revealed Text on Scroll</p>
+            </div>
+        </div>
+        <div class="content">
+            <p>Scroll down to see the sticky effect in action. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.</p>
+            <!-- Add more content to enable scrolling -->
+            <div style="height: 2000px;"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('scroll', function() {
+            const revealText = document.querySelector('.reveal-text');
+            const stickyContent = document.querySelector('.sticky-content');
+            const contentHeight = stickyContent.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (contentHeight <= windowHeight / 2) {
+                revealText.style.opacity = '1';
+            } else {
+                revealText.style.opacity = '0';
+            }
+        });
+    </script>
+</body>
+</html>

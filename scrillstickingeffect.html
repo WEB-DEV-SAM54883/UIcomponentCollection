@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Scroll Reveal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .sticky-section {
+            position: relative;
+            height: 100vh;
+        }
+
+        .sticky-content {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .gradient-bg-1 {
+            background: linear-gradient(to bottom right, #06b6d4, #10b981); /* Tailwind cyan-500 to emerald-500 */
+        }
+
+        .gradient-bg-2 {
+            background: linear-gradient(to bottom right, #f97316, #facc15); /* Tailwind orange-500 to yellow-500 */
+        }
+
+        .content {
+            font-size: 1rem;
+            color: #FFF;
+            padding: 10px;
+        }
+
+        .hidden {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-black text-white p-10">
+    <div class="container mx-auto">
+        <div class="sticky-section">
+            <div class="sticky-content gradient-bg-1">
+                <div class="hidden">Collaborative Editing</div>
+            </div>
+        </div>
+        <div class="sticky-section">
+            <div class="sticky-content">
+                <img src="https://via.placeholder.com/300" alt="linear board demo" class="hidden h-full w-full object-cover">
+            </div>
+        </div>
+        <div class="sticky-section">
+            <div class="sticky-content gradient-bg-2">
+                <div class="hidden">Version control</div>
+            </div>
+        </div>
+        <div class="sticky-section">
+            <div class="sticky-content gradient-bg-1">
+                <div class="hidden">Running out of content</div>
+            </div>
+        </div>
+        <div class="content">
+            <p>Scroll down to see the sticky effect in action. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.</p>
+            <!-- Add more content to enable scrolling -->
+            <div style="height: 2000px;"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.sticky-section');
+            const windowHeight = window.innerHeight;
+
+            sections.forEach(section => {
+                const content = section.querySelector('.sticky-content .hidden');
+                if (content) {
+                    const contentTop = content.getBoundingClientRect().top;
+
+                    if (contentTop <= windowHeight / 2) {
+                        content.classList.add('visible');
+                    } else {
+                        content.classList.remove('visible');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

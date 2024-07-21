@@ -1,0 +1,33 @@
+<!-- Typing Text Animation -->
+<section class="typing-text-section">
+    <h1 class="typing-text">Welcome to Our Award-Winning Website!</h1>
+  </section>
+  
+  <style>
+  .typing-text-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+  }
+  .typing-text {
+    font-size: 2em;
+    color: #FFC600;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid #5800FF;
+    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #5800FF; }
+  }
+  </style>
+  

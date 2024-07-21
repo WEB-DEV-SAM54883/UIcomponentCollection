@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave Animation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .wave-animation-section {
+            position: relative;
+            height: 100vh;
+            background-color: #000000;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 200%;
+            height: 200px;
+            background: #5800FF;
+            opacity: 0.7;
+            animation: wave 5s infinite linear;
+        }
+
+        .wave:nth-child(2) {
+            bottom: 30px;
+            animation: wave 5s infinite linear reverse;
+            opacity: 0.5;
+        }
+
+        .wave:nth-child(3) {
+            bottom: 60px;
+            animation: wave 5s infinite linear;
+            opacity: 0.3;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Wave Animation -->
+    <section class="wave-animation-section">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dot Backgrounds</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dot-background {
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .radial-fade {
+            mask-image: radial-gradient(ellipse at center, transparent 20%, black 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, transparent 20%, black 80%);
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="h-[50rem] w-full relative flex items-center justify-center dot-background">
+        <div class="absolute pointer-events-none inset-0 flex items-center justify-center radial-fade bg-black"></div>
+        <p class="text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
+            Backgrounds
+        </p>
+    </div>
+</body>
+</html>

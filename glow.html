@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Text Animation</title>
+    <style>
+        .glowing-text-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+        }
+
+        .glowing-text {
+            font-size: 3em;
+            color: #5800FF;
+            text-shadow: 0 0 10px #FFC600, 0 0 20px #FFC600, 0 0 30px #FFC600, 0 0 40px #FFC600;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #FFC600, 0 0 20px #FFC600, 0 0 30px #FFC600, 0 0 40px #FFC600;
+            }
+            to {
+                text-shadow: 0 0 20px #FFC600, 0 0 30px #FFC600, 0 0 40px #FFC600, 0 0 50px #FFC600;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="glowing-text-section">
+        <h1 class="glowing-text">Glowing Text</h1>
+    </section>
+</body>
+</html>

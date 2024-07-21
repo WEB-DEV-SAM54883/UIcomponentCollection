@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <style>
+    body { margin: 0; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <script>
+    let wave = [];
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      for (let i = 0; i < width; i++) {
+        wave[i] = height / 2;
+      }
+    }
+
+    function draw() {
+      background(0);
+      stroke(255);
+      noFill();
+      beginShape();
+      for (let i = 0; i < wave.length; i++) {
+        wave[i] = height / 2 + sin((i * 0.01) + frameCount * 0.05) * 100;
+        vertex(i, wave[i]);
+      }
+      endShape();
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+      wave = [];
+      for (let i = 0; i < width; i++) {
+        wave[i] = height / 2;
+      }
+    }
+  </script>
+</body>
+</html>

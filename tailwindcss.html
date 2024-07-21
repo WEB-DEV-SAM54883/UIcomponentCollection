@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #FFC600;
+            transition: width 0.4s ease;
+            -webkit-transition: width 0.4s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+            background: #5800FF;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <nav class="bg-black py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <div class="text-white font-bold text-2xl">Logo</div>
+            <ul class="flex space-x-4">
+                <li><a href="#" class="nav-link text-white">Home</a></li>
+                <li><a href="#" class="nav-link text-white">About</a></li>
+                <li><a href="#" class="nav-link text-white">Services</a></li>
+                <li><a href="#" class="nav-link text-white">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!-- Services Section with Cards Flip Animation -->
+<section class="services-flip-section">
+    <h2>Our Services</h2>
+    <div class="services-flip-cards">
+      <div class="services-flip-card">
+        <div class="services-flip-card-inner">
+          <div class="services-flip-card-front">
+            <h3>Service 1</h3>
+          </div>
+          <div class="services-flip-card-back">
+            <p>Details about Service 1.</p>
+          </div>
+        </div>
+      </div>
+      <div class="services-flip-card">
+        <div class="services-flip-card-inner">
+          <div class="services-flip-card-front">
+            <h3>Service 2</h3>
+          </div>
+          <div class="services-flip-card-back">
+            <p>Details about Service 2.</p>
+          </div>
+        </div>
+      </div>
+      <div class="services-flip-card">
+        <div class="services-flip-card-inner">
+          <div class="services-flip-card-front">
+            <h3>Service 3</h3>
+          </div>
+          <div class="services-flip-card-back">
+            <p>Details about Service 3.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+  .services-flip-section {
+    padding: 50px 20px;
+    background-color: #000000;
+    color: #FFC600;
+    text-align: center;
+  }
+  .services-flip-section h2 {
+    margin-bottom: 40px;
+  }
+  .services-flip-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .services-flip-card {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    perspective: 1000px;
+  }
+  .services-flip-card-inner {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  .services-flip-card:hover .services-flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .services-flip-card-front, .services-flip-card-back {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: #5800FF;
+    background-color: #FFC600;
+  }
+  .services-flip-card-back {
+    transform: rotateY(180deg);
+  }
+  </style>
+  

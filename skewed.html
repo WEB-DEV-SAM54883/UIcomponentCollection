@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skewed Section Transition</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .skewed-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #5800FF;
+            color: #FFC600;
+            transform: skewY(-5deg);
+            overflow: hidden;
+        }
+
+        .skewed-content {
+            transform: skewY(5deg);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Skewed Section Transition -->
+    <section class="skewed-section">
+        <div class="skewed-content">
+            <h1>Skewed Section Transition</h1>
+            <p>This section has a skewed transition effect.</p>
+        </div>
+    </section>
+
+</body>
+</html>

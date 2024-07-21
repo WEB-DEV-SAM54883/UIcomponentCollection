@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow Along Cursor</title>
+    <style>
+        body {
+            background-color: #1a202c;
+            color: #ffffff;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        .follow-cursor {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 198, 0, 0.1);
+            border: 2px solid #FFC600;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.1s ease, background-color 0.3s ease;
+            transform: translate(-50%, -50%);
+            color: #FFC600;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .hover-target:hover + .follow-cursor {
+            background-color: rgba(88, 0, 255, 0.1);
+            border-color: #5800FF;
+            color: #5800FF;
+            transform: scale(1.5) translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="flex justify-center items-center h-full">
+        <h1 class="hover-target text-3xl">Hover over me!</h1>
+    </div>
+    <div id="cursor" class="follow-cursor">
+        <span>Hover</span>
+    </div>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.getElementById('cursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>
