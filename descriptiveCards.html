@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Blog Section</title>
+  <style>
+    .blog {
+      display: flex;
+      justify-content: space-around;
+      padding: 50px;
+      background: #f4f4f4;
+    }
+    .blog-post {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 30%;
+      transition: transform 0.3s ease;
+    }
+    .blog-post:hover {
+      transform: scale(1.05);
+    }
+    .blog-post img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .blog-post h3 {
+      margin: 20px 0;
+    }
+    .blog-post p {
+      color: #666;
+    }
+    .btn-primary {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Blog Section -->
+  <section class="blog">
+    <div class="blog-post">
+      <img src="blog-image1.jpg" alt="Blog Image 1">
+      <h3>Blog Post Title</h3>
+      <p>Short description or excerpt of the blog post.</p>
+      <a href="#" class="btn-primary">Read More</a>
+    </div>
+    <div class="blog-post">
+      <img src="blog-image2.jpg" alt="Blog Image 2">
+      <h3>Blog Post Title</h3>
+      <p>Short description or excerpt of the blog post.</p>
+      <a href="#" class="btn-primary">Read More</a>
+    </div>
+    <div class="blog-post">
+      <img src="blog-image3.jpg" alt="Blog Image 3">
+      <h3>Blog Post Title</h3>
+      <p>Short description or excerpt of the blog post.</p>
+      <a href="#" class="btn-primary">Read More</a>
+    </div>
+  </section>
+</body>
+</html>

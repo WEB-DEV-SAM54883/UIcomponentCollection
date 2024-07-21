@@ -1,0 +1,74 @@
+<!-- 3D Scroll-Triggered Rotating Sphere -->
+<section class="scroll-rotating-sphere-section">
+    <div class="scroll-sphere-container">
+      <div class="scroll-sphere">
+        <div class="scroll-face front">Front</div>
+        <div class="scroll-face back">Back</div>
+        <div class="scroll-face left">Left</div>
+        <div class="scroll-face right">Right</div>
+        <div class="scroll-face top">Top</div>
+        <div class="scroll-face bottom">Bottom</div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 200vh; /* Enough height to scroll */
+    background-color: #1e1e1e;
+  }
+  
+  .scroll-rotating-sphere-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .scroll-sphere-container {
+    perspective: 1000px;
+  }
+  
+  .scroll-sphere {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+  
+  .scroll-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #fff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  
+  .scroll-face.front  { transform: rotateY(  0deg) translateZ(100px); }
+  .scroll-face.back   { transform: rotateY(180deg) translateZ(100px); }
+  .scroll-face.left   { transform: rotateY(-90deg) translateZ(100px); }
+  .scroll-face.right  { transform: rotateY( 90deg) translateZ(100px); }
+  .scroll-face.top    { transform: rotateX( 90deg) translateZ(100px); }
+  .scroll-face.bottom { transform: rotateX(-90deg) translateZ(100px); }
+  </style>
+  
+  <script>
+  document.addEventListener("scroll", function() {
+    const sphere = document.querySelector('.scroll-sphere');
+    const scrollY = window.scrollY;
+    const rotateX = Math.min(scrollY / 5, 360);
+    const rotateY = Math.min(scrollY / 2, 360);
+    sphere.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  </script>
+  

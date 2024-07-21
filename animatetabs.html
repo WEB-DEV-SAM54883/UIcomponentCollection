@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Tabs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: #5800FF;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #FFC600;
+            color: #000000;
+        }
+
+        .tab-content {
+            padding: 20px;
+            background-color: #333;
+            border-radius: 5px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-black text-white p-10">
+    <div class="tabs">
+        <button class="tab" data-tab="tab1">Tab 1</button>
+        <button class="tab" data-tab="tab2">Tab 2</button>
+        <button class="tab" data-tab="tab3">Tab 3</button>
+    </div>
+    <div class="tab-content" id="tab1">Content for Tab 1</div>
+    <div class="tab-content hidden" id="tab2">Content for Tab 2</div>
+    <div class="tab-content hidden" id="tab3">Content for Tab 3</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const target = this.dataset.tab;
+                    contents.forEach(content => {
+                        content.classList.add('hidden');
+                        if (content.id === target) {
+                            content.classList.remove('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

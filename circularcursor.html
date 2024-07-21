@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Dot Cursor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            cursor: none;
+        }
+
+        .expanding-cursor {
+            width: 10px;
+            height: 10px;
+            background-color: #FFC600;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            transition: transform 0.1s ease, background-color 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .hover-target:hover + .expanding-cursor {
+            background-color: #5800FF;
+            transform: scale(2) translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white h-screen">
+    <div class="flex justify-center items-center h-full hover-target">
+        <h1 class="text-3xl">Hover over me!</h1>
+    </div>
+    <div id="cursor" class="expanding-cursor"></div>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.getElementById('cursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>

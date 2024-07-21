@@ -1,0 +1,31 @@
+<!-- Expanding Circle -->
+<section class="expanding-circle-section">
+    <div class="expanding-circle"></div>
+  </section>
+  
+  <style>
+  .expanding-circle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+  }
+  .expanding-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #5800FF;
+    border-radius: 50%;
+    animation: expandCircle 2s infinite;
+  }
+  
+  @keyframes expandCircle {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(2);
+    }
+  }
+  </style>
+  

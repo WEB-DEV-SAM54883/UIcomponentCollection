@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Hero Cube with GSAP</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+
+        .content {
+            position: relative;
+            height: 200vh; /* Make the content height double the viewport height to enable scrolling */
+            background: linear-gradient(180deg, #f8f9fa, #e9ecef);
+            padding-top: 50vh; /* Center content vertically in the first half of the viewport */
+            padding-bottom: 50vh;
+            z-index: 0;
+        }
+
+        .content h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .hero-section {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            pointer-events: none; /* Make sure the cube doesn't interfere with scrolling */
+            z-index: 10;
+        }
+
+        #hero-cube {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div id="hero-cube"></div>
+    </section>
+    <div class="content">
+        <h1>Scroll Down to See the Cube</h1>
+        <p style="text-align:center">Keep scrolling to experience the parallax effect.</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Scene setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+            // Renderer settings
+            const container = document.getElementById('hero-cube');
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x000000, 0);
+            container.appendChild(renderer.domElement);
+
+            // Cube geometry and material
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshBasicMaterial({ color: 0xF4CE14, wireframe: true });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+
+            // Camera position
+            camera.position.z = 5;
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+            });
+
+            // Register the ScrollTrigger plugin with GSAP
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Parallax Scrolling Effect
+            gsap.to(".content", {
+                scrollTrigger: {
+                    trigger: ".content",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true,
+                },
+                yPercent: -50,
+            });
+
+            // Cube Rotation on Scroll
+            gsap.to(cube.rotation, {
+                scrollTrigger: {
+                    trigger: ".content",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true,
+                },
+                x: "+=6",
+                y: "+=6",
+            });
+        });
+    </script>
+</body>
+</html>

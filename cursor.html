@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Circular Cursor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            cursor: none;
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #FFC600;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            transition: transform 0.1s ease, border-color 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .hover-target:hover + .custom-cursor {
+            border-color: #5800FF;
+            transform: scale(1.5) translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white h-screen">
+    <div class="flex justify-center items-center h-full hover-target">
+        <h1 class="text-3xl">Hover over me!</h1>
+    </div>
+    <div id="cursor" class="custom-cursor"></div>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.getElementById('cursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>

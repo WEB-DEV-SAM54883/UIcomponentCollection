@@ -1,0 +1,33 @@
+<!-- Floating Elements -->
+<section class="floating-elements-section">
+    <div class="floating-element">Floating 1</div>
+    <div class="floating-element">Floating 2</div>
+    <div class="floating-element">Floating 3</div>
+  </section>
+  
+  <style>
+  .floating-elements-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+  }
+  .floating-element {
+    background-color: #5800FF;
+    color: #FFC600;
+    padding: 20px;
+    border-radius: 10px;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  </style>
+  

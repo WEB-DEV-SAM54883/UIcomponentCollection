@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Carousel</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .carousel {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            backface-visibility: hidden;
+            transform: rotateY(0deg) translateZ(300px);
+            transition: transform 6s;
+        }
+
+        .carousel:hover .carousel-item:nth-child(1) {
+            transform: rotateY(360deg) translateZ(300px);
+        }
+
+        .carousel:hover .carousel-item:nth-child(2) {
+            transform: rotateY(270deg) translateZ(300px);
+        }
+
+        .carousel:hover .carousel-item:nth-child(3) {
+            transform: rotateY(180deg) translateZ(300px);
+        }
+
+        .carousel:hover .carousel-item:nth-child(4) {
+            transform: rotateY(90deg) translateZ(300px);
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="carousel-item" style="background-color: #5800FF;">1</div>
+        <div class="carousel-item" style="background-color: #FFC600;">2</div>
+        <div class="carousel-item" style="background-color: #5800FF;">3</div>
+        <div class="carousel-item" style="background-color: #FFC600;">4</div>
+    </div>
+</body>
+</html>

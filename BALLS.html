@@ -1,0 +1,41 @@
+<!-- Bouncing Balls Animation -->
+<section class="bouncing-balls-section">
+    <div class="bouncing-ball"></div>
+    <div class="bouncing-ball"></div>
+    <div class="bouncing-ball"></div>
+  </section>
+  
+  <style>
+  .bouncing-balls-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100vh;
+    background-color: #45474B;
+  }
+  .bouncing-ball {
+    width: 50px;
+    height: 50px;
+    background-color: #F4CE14;
+    border-radius: 50%;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  
+  .bouncing-ball:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  
+  .bouncing-ball:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-150px);
+    }
+  }
+  </style>
+  

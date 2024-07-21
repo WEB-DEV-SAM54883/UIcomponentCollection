@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Text Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .text-container {
+            perspective: 500px;
+        }
+
+        .text-3d {
+            font-size: 4rem;
+            color: #5800FF;
+            text-shadow: 1px 1px 0 #FFC600, 2px 2px 0 #FFC600, 3px 3px 0 #FFC600, 4px 4px 0 #FFC600, 5px 5px 0 #FFC600;
+            transform: rotateX(10deg) rotateY(-10deg);
+            animation: textMove 2s infinite alternate;
+        }
+
+        @keyframes textMove {
+            from { transform: rotateX(10deg) rotateY(-10deg) translateZ(0); }
+            to { transform: rotateX(10deg) rotateY(-10deg) translateZ(20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-container">
+        <h1 class="text-3d">3D Text</h1>
+    </div>
+</body>
+</html>

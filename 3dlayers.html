@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Parallax Scrolling</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            perspective: 1px;
+            transform-style: preserve-3d;
+        }
+        .scene {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+        .layer img {
+            width: 100%;
+            height: auto;
+        }
+        .layer-1 {
+            transform: translateZ(-1px) scale(2);
+            z-index: 1;
+        }
+        .layer-2 {
+            transform: translateZ(-2px) scale(3);
+            z-index: 2;
+        }
+        .layer-3 {
+            transform: translateZ(-3px) scale(4);
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="layer layer-1"><img src="image1-large.png" alt="Layer 1"></div>
+        <div class="layer layer-2"><img src="image2-large.png" alt="Layer 2"></div>
+        <div class="layer layer-3"><img src="image3-large.png" alt="Layer 3"></div>
+    </div>
+    <script>
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.layer').forEach(layer => {
+                const speed = layer.getAttribute('data-speed');
+                const yPos = -(window.pageYOffset * speed / 100);
+                layer.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

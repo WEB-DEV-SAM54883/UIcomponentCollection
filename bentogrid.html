@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bento Grid Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .bento-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to bottom right, #3c76c6, #4b5563);
+        }
+
+        .bento-item .header {
+            height: 6rem;
+            background: linear-gradient(to bottom right, #e5e7eb, #d1d5db);
+            border-radius: 0.75rem;
+        }
+
+        .bento-item .icon {
+            width: 1rem;
+            height: 1rem;
+            color: #6b7280;
+        }
+
+        .bento-item .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .bento-item .description {
+            margin-top: 0.5rem;
+        }
+
+        .bento-item.md-col-span-2 {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="max-w-4xl mx-auto py-12 px-4">
+        <h1 class="text-3xl font-bold mb-8 text-yellow-400">Bento Grid</h1>
+        <div class="bento-grid">
+            <div class="bento-item">
+                <div class="header"></div>
+                <div class="title">The Dawn of Innovation</div>
+                <div class="description">Explore the birth of groundbreaking ideas and inventions.</div>
+                <svg class="icon">
+                    <use xlink:href="#icon-clipboard-copy"></use>
+                </svg>
+            </div>
+            <div class="bento-item">
+                <div class="header"></div>
+                <div class="title">The Digital Revolution</div>
+                <div class="description">Dive into the transformative power of technology.</div>
+                <svg class="icon">
+                    <use xlink:href="#icon-file-broken"></use>
+                </svg>
+            </div>
+            <div class="bento-item">
+                <div class="header"></div>
+                <div class="title">The Art of Design</div>
+                <div class="description">Discover the beauty of thoughtful and functional design.</div>
+                <svg class="icon">
+                    <use xlink:href="#icon-signature"></use>
+                </svg>
+            </div>
+            <div class="bento-item md-col-span-2">
+                <div class="header"></div>
+                <div class="title">The Power of Communication</div>
+                <div class="description">Understand the impact of effective communication in our lives.</div>
+                <svg class="icon">
+                    <use xlink:href="#icon-table-column"></use>
+                </svg>
+            </div>
+            <div class="bento-item">
+                <div class="header"></div>
+                <div class="title">The Pursuit of Knowledge</div>
+                <div class="description">Join the quest for understanding and enlightenment.</div>
+                <svg class="icon">
+                    <use xlink:href="#icon-arrow-wave-right-up"></use>
+                </svg>
+            </div>
+            <div class="bento-item">
+                <div class="header"></div>
+                <div class="title">The Joy of Creation</div>
+                <div class="description">Experience the thrill of bringing ideas to life.</div>
+                <svg class="icon">
+                    <use xlink:href="#icon-box-align-top-left"></use>
+                </svg>
+            </div>
+            <div class="bento-item md-col-span-2">
+                <div class="header"></div>
+                <div class="title">The Spirit of Adventure</div>
+                <div class="description">Embark on exciting journeys and thrilling discoveries.</div>
+                <svg class="icon">
+                    <use xlink:href="#icon-box-align-right-filled"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Icon definitions -->
+    <svg style="display: none;">
+        <symbol id="icon-clipboard-copy" viewBox="0 0 24 24">
+            <path d="M19 2H14.82C14.4 1.42 13.75 1 13 1h-2c-.75 0-1.4.42-1.82 1H5c-1.1 0-2 .9-2 2v17c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0h2v2h-2V2zm3 16H8v-2h7v2zm0-4H8v-2h7v2zm3-7H5V4h2.18C7.4 4.58 8.05 5 8.82 5h6.36c.77 0 1.42-.42 1.64-1H19v3z"/>
+        </symbol>
+        <symbol id="icon-file-broken" viewBox="0 0 24 24">
+            <path d="M11 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h5v-2H5V5h6V3zm8 4h-5v5H8v6h4v2h5c1.1 0 2-.9 2-2V9l-5-5zm-3 8v-4h4v4h-4zm3 4h-2v-2h2v2z"/>
+        </symbol>
+        <symbol id="icon-signature" viewBox="0 0 24 24">
+            <path d="M13.3 4.22c.35-.35.92-.35 1.27 0l2.25 2.25c.35.35.35.92 0 1.27L12.32 12h-1.34L8 16.99V12.3l5.3-5.3zM5 19.79V21h1.21L16 11.21l-1.22-1.22L5 19.79zm15.71-9.48c.78.78.78 2.04 0 2.82l-4.25 4.25c-.78.78-2.04.78-2.82 0l-1.22-1.22 7.07-7.07 1.22 1.22zm-9.5 3.53L3 22H2v-1l8.21-8.21l1.22 1.22l-1.22 1.22zm3.53-3.53l-.71-.71l2.83-2.83.71.71l-2.83 2.83z"/>
+        </symbol>
+        <symbol id="icon-table-column" viewBox="0 0 24 24">
+            <path d="M21 19V3H3v18h18V19h-2v-2h-2v2H5v-2h12v2h2v-2h2zm0-12h-2V7h2v2zm0 4h-2v-2h2v2zm0-8h-2V3h2v2zm-4 12H7V5h10v10h-2v2h2v-2h2v-2h-2v-2h2v2h-2v2h-2v2h-2v-2H9v2h6v-2zm-6-6H7V7h2v2zm0 4H7v-2h2v2zM9 7v2H7V7h2z"/>
+        </symbol>
+        <symbol id="icon-arrow-wave-right-up" viewBox="0 0 24 24">
+            <path d="M9.64 3c.66 0 1.19.53 1.19 1.19V8h-2V4.19L2.64 10H5v2H2.64c-.66 0-1.19-.53-1.19-1.19v-5h2v4.61l6.17-6.17L9.64 3zm10.54 11.54l-6.17 6.17L14 20v-2h2.19V16h-5.6c-1.1 0-2 .9-2 2H5v-4h2v2h2v-2h6.19l4.61-4.61 1.06 1.06L15.19 16H20v2h-2.19v2H20c1.1 0 2-.9 2-2v-5h-2v3.54z"/>
+        </symbol>
+        <symbol id="icon-box-align-top-left" viewBox="0 0 24 24">
+            <path d="M2 20h2v-2H2v2zm0-4h2v-2H2v2zm4 0h2v-2H6v2zm0 4h2v-2H6v2zm4-4h2v-2h-2v2zm-4-8H6v2H2V6h2v4h2V6zm2 0h2v2H6V6zm10-2V4h2v2h-2zm2 8v-2h2v2h-2zm-4-2h2v2h-2v-2zm-8 0h2v2H6v-2zm0 8h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm0-8h2v2h-2v-2z"/>
+        </symbol>
+        <symbol id="icon-box-align-right-filled" viewBox="0 0 24 24">
+            <path d="M16 11h-2v2h2v2h-2v2h2v2h-2v2h6v-2h-2v-2h2v-2h-2v-2h2v-2h-6v-2zm-2-2h2V3h-2v2h-2V3h-2v2H6v2h2v2h4V7h-2V5h2v4zM6 19v-2h2v-2H6v2H4v2h2zm-2 2v2h2v-2H4z"/>
+        </symbol>
+    </svg>
+</body>
+</html>

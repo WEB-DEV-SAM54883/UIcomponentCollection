@@ -1,0 +1,53 @@
+
+<!-- Typing Animation -->
+<section class="typing-section">
+  <h1 class="typing-text"></h1>
+</section>
+
+<style>
+.typing-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
+.typing-text {
+  color: #FFC600;
+  font-size: 2em;
+  overflow: hidden;
+  border-right: .15em solid #5800FF;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: typing 3.5s steps(30, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #5800FF; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const text = "Welcome to Our Website";
+  const typingText = document.querySelector('.typing-text');
+  let index = 0;
+  
+  function type() {
+    if (index < text.length) {
+      typingText.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(type, 100);
+    }
+  }
+  
+  type();
+});
+</script>

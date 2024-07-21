@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Animations</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #FFC600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200vh; /* For scroll effect */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 100vh; /* To make text appear after scrolling */
+        }
+
+        .fade-in-text {
+            font-size: 2em;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="fade-in-text">Scroll to fade in</div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = document.querySelector('.fade-in-text');
+
+            function handleScroll() {
+                const textTop = text.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (textTop < windowHeight - 50) {
+                    text.classList.add('visible');
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
+</body>
+</html>

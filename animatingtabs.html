@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Tabs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tabs-container {
+            height: 20rem;
+            perspective: 1000px;
+        }
+
+        .tab-content {
+            display: none;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            border-radius: 2xl;
+            padding: 2.5rem;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            background: linear-gradient(to bottom right, #6B21A8, #7C3AED);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content img {
+            object-fit: cover;
+            object-position: left top;
+            height: 60%;
+            position: absolute;
+            bottom: -2.5rem;
+            inset-x-0;
+            width: 90%;
+            border-radius: 1.5rem;
+            margin: auto;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: #5800FF;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #FFC600;
+            color: #000000;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white p-10">
+    <div class="tabs-container mx-auto my-40 flex flex-col items-start justify-start max-w-5xl w-full">
+        <div class="tabs">
+            <button class="tab" data-tab="tab1">Product</button>
+            <button class="tab" data-tab="tab2">Services</button>
+            <button class="tab" data-tab="tab3">Playground</button>
+            <button class="tab" data-tab="tab4">Content</button>
+            <button class="tab" data-tab="tab5">Random</button>
+        </div>
+        <div class="tab-content active" id="tab1">
+            <p>Product Tab</p>
+            <img src="/linear.webp" alt="dummy image" width="1000" height="1000">
+        </div>
+        <div class="tab-content" id="tab2">
+            <p>Services tab</p>
+            <img src="/linear.webp" alt="dummy image" width="1000" height="1000">
+        </div>
+        <div class="tab-content" id="tab3">
+            <p>Playground tab</p>
+            <img src="/linear.webp" alt="dummy image" width="1000" height="1000">
+        </div>
+        <div class="tab-content" id="tab4">
+            <p>Content tab</p>
+            <img src="/linear.webp" alt="dummy image" width="1000" height="1000">
+        </div>
+        <div class="tab-content" id="tab5">
+            <p>Random tab</p>
+            <img src="/linear.webp" alt="dummy image" width="1000" height="1000">
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const target = this.dataset.tab;
+
+                    contents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === target) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

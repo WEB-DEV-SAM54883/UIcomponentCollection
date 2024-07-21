@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Arrow Cursor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            cursor: none;
+        }
+
+        #cursor {
+            position: absolute;
+            pointer-events: none;
+            width: 40px;
+            height: 40px;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white h-screen">
+    <div class="flex justify-center items-center h-full">
+        <h1 class="text-3xl">Hover over me!</h1>
+    </div>
+    <div id="cursor"></div>
+    <script type="module">
+        import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
+
+        let scene, camera, renderer, arrow;
+
+        function init() {
+            // Scene setup
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('cursor').appendChild(renderer.domElement);
+
+            // Arrow setup
+            const geometry = new THREE.ConeGeometry(0.2, 0.5, 32);
+            const material = new THREE.MeshBasicMaterial({ color: 0xFFC600 });
+            arrow = new THREE.Mesh(geometry, material);
+            arrow.rotation.z = Math.PI / 4;
+            scene.add(arrow);
+            
+            camera.position.z = 5;
+
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.getElementById('cursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+
+            arrow.position.x = (e.clientX / window.innerWidth) * 2 - 1;
+            arrow.position.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        init();
+    </script>
+</body>
+</html>

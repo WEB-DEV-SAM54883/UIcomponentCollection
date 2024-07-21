@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Caret with Dropdown</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .caret {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            color: #FFC600;
+        }
+
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
+    <div class="relative">
+        <button id="dropdownButton" class="text-3xl">
+            Menu <span id="caret" class="caret">⯆</span>
+        </button>
+        <div id="dropdownMenu" class="hidden absolute bg-gray-700 text-white mt-2 py-2 w-48 rounded-md shadow-xl">
+            <a href="#" class="block px-4 py-2 hover:bg-gray-800">Option 1</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-800">Option 2</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-800">Option 3</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownButton = document.getElementById('dropdownButton');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            const caret = document.getElementById('caret');
+
+            dropdownButton.addEventListener('click', function() {
+                dropdownMenu.classList.toggle('hidden');
+                caret.classList.toggle('rotate-180');
+            });
+        });
+    </script>
+</body>
+</html>

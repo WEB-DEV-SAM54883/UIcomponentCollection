@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW world</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .title__container {
+            position: relative;
+        }
+
+        .shader-title {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .shader-title__content h1 {
+            font-size: 5em;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            position: relative;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .shader-title__canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="title__container">
+        <div class="shader-title">
+            <div class="shader-title__content">
+                <h1 class="uber-style">
+                    <div class="anim--split__line">The New</div>
+                    <div class="anim--split__line">World</div>
+                </h1>
+            </div>
+            <canvas class="shader-title__canvas"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.querySelector('.shader-title__canvas');
+        const ctx = canvas.getContext('2d');
+        const titleContainer = document.querySelector('.shader-title');
+        const h1 = document.querySelector('.shader-title__content h1');
+
+        function resizeCanvas() {
+            canvas.width = titleContainer.clientWidth;
+            canvas.height = titleContainer.clientHeight;
+            console.log(`Canvas size: ${canvas.width}x${canvas.height}`);
+            updateGradient({ clientX: canvas.width / 2 });
+        }
+
+        function updateGradient(e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            console.log(`Mouse position: ${x}`);
+            const gradient = ctx.createLinearGradient(x - 100, 0, x + 100, 0);
+            gradient.addColorStop(0, 'lightblue');
+            gradient.addColorStop(1, 'darkblue');
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.globalCompositeOperation = 'destination-in';
+            ctx.font = `bold ${h1.clientHeight}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('The New', canvas.width / 2, canvas.height / 2 - h1.clientHeight / 2);
+            ctx.fillText('World', canvas.width / 2, canvas.height / 2 + h1.clientHeight / 2);
+            ctx.globalCompositeOperation = 'source-over';
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        canvas.addEventListener('mousemove', updateGradient);
+
+        // Initial drawing for debugging
+        function initialDrawing() {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(10, 10, 50, 50);
+            console.log("Initial drawing done.");
+        }
+
+        // Ensure canvas context is retrieved
+        if (ctx) {
+            console.log("Canvas context retrieved successfully.");
+            initialDrawing();
+        } else {
+            console.error("Failed to retrieve canvas context.");
+        }
+
+        resizeCanvas();
+    </script>
+</body>
+</html>

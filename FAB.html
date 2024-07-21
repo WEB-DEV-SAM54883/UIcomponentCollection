@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Action Button</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fab {
+            animation: fabBounce 2s infinite;
+        }
+
+        @keyframes fabBounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="container mx-auto py-12">
+        <p class="text-center text-white">Scroll down to see the floating action button.</p>
+        <div style="height: 1500px;"></div>
+        <button class="fab fixed bottom-4 right-4 bg-yellow-500 text-black p-4 rounded-full shadow-lg hover:bg-yellow-600">+</button>
+    </div>
+</body>
+</html>

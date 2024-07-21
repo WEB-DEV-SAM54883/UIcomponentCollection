@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Change on Scroll</title>
+    <style>
+        .bg-color-change-section {
+            height: 200vh;
+            background-color: #000000;
+            transition: background-color 1s ease;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #FFC600;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section class="bg-color-change-section">
+        <div class="content">
+            <h1>Scroll Down</h1>
+            <p>Watch the background color change as you scroll down.</p>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight);
+            const newColor = scrollPercentage > 0.5 ? '#5800FF' : '#000000';
+            document.querySelector('.bg-color-change-section').style.backgroundColor = newColor;
+        });
+    </script>
+</body>
+</html>

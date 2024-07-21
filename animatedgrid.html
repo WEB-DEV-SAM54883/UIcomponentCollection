@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Layout Grid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.js"></script>
+    <style>
+        .grid-item {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        .grid-item.expanded {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="container mx-auto py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="grid">
+            <div class="grid-item bg-yellow-500 text-black p-6 rounded-lg shadow-lg">Item 1</div>
+            <div class="grid-item bg-yellow-500 text-black p-6 rounded-lg shadow-lg">Item 2</div>
+            <div class="grid-item bg-yellow-500 text-black p-6 rounded-lg shadow-lg">Item 3</div>
+            <div class="grid-item bg-yellow-500 text-black p-6 rounded-lg shadow-lg">Item 4</div>
+            <div class="grid-item bg-yellow-500 text-black p-6 rounded-lg shadow-lg">Item 5</div>
+            <div class="grid-item bg-yellow-500 text-black p-6 rounded-lg shadow-lg">Item 6</div>
+        </div>
+    </div>
+    <script>
+        const { motion, AnimatePresence } = window.FramerMotion;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const grid = document.getElementById('grid');
+            grid.addEventListener('click', function(event) {
+                if (event.target.classList.contains('grid-item')) {
+                    event.target.classList.toggle('expanded');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

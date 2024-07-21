@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Caret</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .caret {
+            display: inline-block;
+            animation: blink 1s step-start infinite;
+            color: #5800FF;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
+    <div class="text-3xl">
+        <span id="text"></span><span class="caret">|</span>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textElement = document.getElementById('text');
+            const text = 'Welcome to My Website';
+            let index = 0;
+
+            function typeText() {
+                if (index < text.length) {
+                    textElement.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeText, 150);
+                }
+            }
+
+            typeText();
+        });
+    </script>
+</body>
+</html>

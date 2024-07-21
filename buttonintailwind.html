@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Button</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .btn {
+            padding: 10px 20px;
+            background-color: #5800FF;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s ease;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: #FFC600;
+            transition: transform 0.5s ease;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .btn:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .btn:hover {
+            color: #000000;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-black flex items-center justify-center h-screen">
+    <button class="btn">Click Me</button>
+</body>
+</html>

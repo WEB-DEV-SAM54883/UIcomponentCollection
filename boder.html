@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Border on Hover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hover-border {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+            padding: 20px;
+            background-color: #FFC600;
+            color: #000000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .hover-border::before,
+        .hover-border::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(135deg, red, black, purple);
+            transition: transform 0.5s ease;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .hover-border::before {
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        .hover-border::after {
+            transform: scaleY(0);
+            transform-origin: top;
+        }
+
+        .hover-border:hover::before {
+            transform: scaleX(1);
+            transition: transform 0.5s ease 0.25s; /* Delay to sync with after */
+        }
+
+        .hover-border:hover::after {
+            transform: scaleY(1);
+        }
+    </style>
+</head>
+<body class="bg-black text-white flex items-center justify-center h-screen">
+    <a href="#" class="hover-border">Hover Me</a>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!-- 3D Scroll-Triggered Card Deck -->
+<section class="scroll-card-deck-section">
+    <div class="scroll-card-deck">
+      <div class="scroll-card">Card 1</div>
+      <div class="scroll-card">Card 2</div>
+      <div class="scroll-card">Card 3</div>
+      <div class="scroll-card">Card 4</div>
+      <div class="scroll-card">Card 5</div>
+    </div>
+  </section>
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 300vh; /* Enough height to scroll */
+    background-color: #45474B;
+  }
+  
+  .scroll-card-deck-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .scroll-card-deck {
+    perspective: 1000px;
+  }
+  
+  .scroll-card {
+    width: 200px;
+    height: 300px;
+    background: #F4CE14;
+    color: #45474B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border: 2px solid #495E57;
+    border-radius: 10px;
+    position: absolute;
+    transition: transform 1s, opacity 1s;
+  }
+  </style>
+  
+  <script>
+  document.addEventListener("scroll", function() {
+    const cards = document.querySelectorAll('.scroll-card');
+    const scrollY = window.scrollY;
+  
+    cards.forEach((card, index) => {
+      const depth = index * 50;
+      const translateY = -scrollY / 5 + depth;
+      const rotateY = scrollY / 5;
+      const opacity = 1 - scrollY / 1000;
+      card.style.transform = `translateY(${translateY}px) rotateY(${rotateY}deg)`;
+      card.style.opacity = opacity;
+    });
+  });
+  </script>
+  

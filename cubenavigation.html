@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cube Navigation Menu</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .cube-menu {
+            perspective: 1000px;
+        }
+
+        .cube {
+            position: relative;
+            width: 150px;
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg) rotateY(30deg);
+            animation: rotateCube 10s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #5800FF;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #FFC600;
+            box-sizing: border-box;
+            font-size: 1.2rem;
+        }
+
+        .front  { transform: translateZ(75px); }
+        .back   { transform: rotateY(180deg) translateZ(75px); }
+        .left   { transform: rotateY(-90deg) translateZ(75px); }
+        .right  { transform: rotateY(90deg) translateZ(75px); }
+        .top    { transform: rotateX(90deg) translateZ(75px); }
+        .bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+        @keyframes rotateCube {
+            from { transform: rotateX(-30deg) rotateY(30deg); }
+            to { transform: rotateX(-30deg) rotateY(390deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cube-menu">
+        <div class="cube">
+            <div class="face front">Home</div>
+            <div class="face back">About</div>
+            <div class="face left">Services</div>
+            <div class="face right">Portfolio</div>
+            <div class="face top">Contact</div>
+            <div class="face bottom">Blog</div>
+        </div>
+    </div>
+</body>
+</html>

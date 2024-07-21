@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECG Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            background-color: #000;
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="ecgCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('ecgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const width = canvas.width;
+        const height = canvas.height;
+        const midHeight = height / 2;
+
+        let xPos = 0;
+
+        const ecgPattern = [
+            {x: 0, y: 0},
+            {x: 50, y: 0},     // longer straight line
+            {x: 60, y: -30},   // peak
+            {x: 70, y: 30},    // trough
+            {x: 80, y: -20},   // small peak
+            {x: 90, y: 0},     // return to baseline
+            {x: 140, y: 0},    // longer straight line
+            {x: 150, y: -50},  // deep trough
+            {x: 160, y: 70},   // tall peak
+            {x: 170, y: 0},    // return to baseline
+            {x: 220, y: 0},    // longer straight line
+            {x: 230, y: -20},  // small trough
+            {x: 240, y: 30},   // small peak
+            {x: 250, y: 0},    // return to baseline
+            {x: 300, y: 0},    // longer straight line
+        ];
+
+        const patternLength = ecgPattern[ecgPattern.length - 1].x;
+
+        function drawECGLine() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.beginPath();
+            ctx.moveTo(0, midHeight);
+
+            let currentX = -xPos % patternLength;
+
+            while (currentX < canvas.width) {
+                for (let i = 0; i < ecgPattern.length; i++) {
+                    const nextPoint = ecgPattern[i];
+                    const y = midHeight + nextPoint.y;
+                    const x = currentX + nextPoint.x;
+                    ctx.lineTo(x, y);
+                }
+                currentX += patternLength;
+            }
+
+            ctx.strokeStyle = '#ff0000'; // red color
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            xPos += 1;
+
+            requestAnimationFrame(drawECGLine);
+        }
+
+        drawECGLine();
+    </script>
+</body>
+</html>

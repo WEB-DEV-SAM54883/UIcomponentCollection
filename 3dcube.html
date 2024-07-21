@@ -1,0 +1,70 @@
+<!-- 3D Scroll-Triggered Rotating Cube -->
+<section class="scroll-rotating-cube-section">
+    <div class="scroll-cube-container">
+      <div class="scroll-cube">
+        <div class="scroll-face front">Front</div>
+        <div class="scroll-face back">Back</div>
+        <div class="scroll-face left">Left</div>
+        <div class="scroll-face right">Right</div>
+        <div class="scroll-face top">Top</div>
+        <div class="scroll-face bottom">Bottom</div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 200vh; /* Enough height to scroll */
+    background-color: #282c34;
+  }
+  
+  .scroll-rotating-cube-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .scroll-cube-container {
+    perspective: 1000px;
+  }
+  
+  .scroll-cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  
+  .scroll-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: #61dafb;
+    color: #282c34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border: 2px solid #282c34;
+  }
+  
+  .scroll-face.front  { transform: rotateY(  0deg) translateZ(100px); }
+  .scroll-face.back   { transform: rotateY(180deg) translateZ(100px); }
+  .scroll-face.left   { transform: rotateY(-90deg) translateZ(100px); }
+  .scroll-face.right  { transform: rotateY( 90deg) translateZ(100px); }
+  .scroll-face.top    { transform: rotateX( 90deg) translateZ(100px); }
+  .scroll-face.bottom { transform: rotateX(-90deg) translateZ(100px); }
+  </style>
+  
+  <script>
+  document.addEventListener("scroll", function() {
+    const cube = document.querySelector('.scroll-cube');
+    const scrollY = window.scrollY;
+    cube.style.transform = `rotateX(${scrollY}deg) rotateY(${scrollY}deg)`;
+  });
+  </script>
+  

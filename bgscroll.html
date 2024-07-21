@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Scroll Animation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .bg-scroll-section {
+            height: 100vh;
+            background: linear-gradient(270deg, #5800FF, #000000);
+            background-size: 200% 200%;
+            animation: bgScroll 10s ease infinite;
+        }
+
+        .bg-scroll-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: #FFC600;
+            font-size: 2em;
+        }
+
+        @keyframes bgScroll {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Scroll Animation -->
+    <section class="bg-scroll-section">
+        <div class="bg-scroll-content">
+            <h1>Background Scroll</h1>
+        </div>
+    </section>
+
+</body>
+</html>

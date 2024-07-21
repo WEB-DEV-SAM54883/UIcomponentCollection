@@ -1,0 +1,30 @@
+<!-- Blinking Background -->
+<section class="blinking-bg-section">
+    <h1>Blinking Background</h1>
+  </section>
+  
+  <style>
+  .blinking-bg-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFC600;
+    font-size: 2em;
+    background-color: #000000;
+    animation: blinking-bg 2s infinite;
+  }
+  
+  @keyframes blinking-bg {
+    0% {
+      background-color: #000000;
+    }
+    50% {
+      background-color: #5800FF;
+    }
+    100% {
+      background-color: #000000;
+    }
+  }
+  </style>
+  

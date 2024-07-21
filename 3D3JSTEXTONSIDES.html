@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Hero Cube with GSAP</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+            background-color: white; /* Set the background color of the whole page to white */
+        }
+
+        .content {
+            position: relative;
+            height: 200vh;
+            background: white; /* Set the content background color to white */
+            z-index: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 50vh 15vw; /* Center content vertically and increase horizontal padding */
+        }
+
+        .content .left,
+        .content .right {
+            width: 35%; /* Increase width to create more space between the sections */
+        }
+
+        .content .spacer {
+            width: 20%; /* Add spacer element to create more space between left and right sections */
+        }
+
+        .content .left h1 {
+            margin-top: 0;
+            color: #5C2FC2; /* Change the color of the h1 text to purple */
+        }
+
+        .hero-section {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        #hero-cube {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div id="hero-cube"></div>
+    </section>
+    <div class="content">
+        <div class="left">
+            <h1>Scroll Down to See the Cube</h1>
+            <p>Keep scrolling to experience the parallax effect.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod tincidunt nisi, eget scelerisque orci vehicula non. Donec sit amet semper odio. Nam consequat posuere ex, sit amet tincidunt nulla convallis eget.</p>
+            <p>Morbi aliquet, lectus vitae vulputate commodo, dolor risus finibus elit, vel gravida ex felis ut dolor. Sed lacinia augue id quam consequat, eget finibus mauris facilisis. Integer nec dolor libero. Duis sit amet urna nec est faucibus laoreet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Phasellus vitae facilisis elit. Integer euismod massa ut turpis dignissim, sit amet pulvinar elit efficitur. Nullam tincidunt orci et orci cursus, ac malesuada justo porttitor.</p>
+        </div>
+        <div class="spacer"></div> <!-- Spacer to create more space between left and right sections -->
+        <div class="right">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod tincidunt nisi, eget scelerisque orci vehicula non. Donec sit amet semper odio. Nam consequat posuere ex, sit amet tincidunt nulla convallis eget.</p>
+            <p>Morbi aliquet, lectus vitae vulputate commodo, dolor risus finibus elit, vel gravida ex felis ut dolor. Sed lacinia augue id quam consequat, eget finibus mauris facilisis. Integer nec dolor libero. Duis sit amet urna nec est faucibus laoreet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Phasellus vitae facilisis elit. Integer euismod massa ut turpis dignissim, sit amet pulvinar elit efficitur. Nullam tincidunt orci et orci cursus, ac malesuada justo porttitor.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec semper elit. Duis vitae ex et tortor feugiat tristique. Aenean fringilla risus id velit dictum, nec vulputate metus aliquet.</p>
+            <p>Ut convallis, nunc ac interdum consequat, metus lorem vehicula sapien, nec varius lorem sapien non augue. Cras egestas ipsum a semper venenatis. Vestibulum gravida posuere felis. Mauris scelerisque nunc ut urna pretium, quis dictum justo aliquet.</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Scene setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+            // Renderer settings
+            const container = document.getElementById('hero-cube');
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x000000, 0);
+            container.appendChild(renderer.domElement);
+
+            // Cube geometry and material
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshBasicMaterial({ color: 0xF4CE14, wireframe: true });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+
+            // Camera position
+            camera.position.z = 5;
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+            });
+
+            // Register the ScrollTrigger plugin with GSAP
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Parallax Scrolling Effect
+            gsap.to(".content", {
+                scrollTrigger: {
+                    trigger: ".content",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true,
+                },
+                yPercent: -50,
+            });
+
+            // Cube Rotation on Scroll
+            gsap.to(cube.rotation, {
+                scrollTrigger: {
+                    trigger: ".content",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true,
+                },
+                x: "+=6",
+                y: "+=6",
+            });
+        });
+    </script>
+</body>
+</html>

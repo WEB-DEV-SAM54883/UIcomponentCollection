@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Gradient Background</title>
+    <style>
+        .gradient-bg-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFC600;
+            font-size: 2em;
+            background: linear-gradient(270deg, #5800FF, #000000);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="gradient-bg-section">
+        <h1>Animated Gradient Background</h1>
+    </section>
+</body>
+</html>

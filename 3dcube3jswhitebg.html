@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Cube</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-section {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-color: transparent;
+        }
+
+        #hero-cube {
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div id="hero-cube"></div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Scene setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000); // Set aspect ratio to 1 (600/600)
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Enable alpha for transparency
+
+            // Renderer settings
+            const container = document.getElementById('hero-cube');
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x000000, 0); // Set clear color to black with 0 opacity (transparent)
+            container.appendChild(renderer.domElement);
+
+            // Cube geometry and wireframe with thinner lines
+            const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+            const wireframe = new THREE.WireframeGeometry(geometry);
+            const material = new THREE.LineBasicMaterial({ color: 0xF4CE14, linewidth: 1 });
+            const cube = new THREE.LineSegments(wireframe, material);
+            scene.add(cube);
+
+            // Camera position
+            camera.position.z = 5;
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+            });
+        });
+    </script>
+</body>
+</html>
